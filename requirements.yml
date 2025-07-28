@@ -1,0 +1,6 @@
+roles:
+  - name: drupal_install_role
+    src: https://git-pic1.support-ent.fr/devops/roles-library/drupal/drupal-install-role.git
+    scm: git
+    version: 2.1.0
+
