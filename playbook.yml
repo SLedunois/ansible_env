@@ -1,14 +1,16 @@
 ---
-- name: Print environment variables
+- name: Print controller env vars
   hosts: localhost
   gather_facts: false
 
   tasks:
-    - name: Print all environment variables
-      shell: env
-      delegate_to: localhost
-      register: env_output
-
-    - name: Show environment variables
+    - name: Print some controller env vars
       debug:
-        var: env_output.stdout
+        msg:
+          GITLAB_TOKEN: "{{ lookup('env', 'GITLAB_TOKEN') }}"
+          HOME: "{{ lookup('env', 'HOME') }}"
+          PATH: "{{ lookup('env', 'PATH') }}"
+          GIT_CONFIG_COUNT: "{{ lookup('env', 'GIT_CONFIG_COUNT') }}"
+          GIT_CONFIG_KEY_0: "{{ lookup('env', 'GIT_CONFIG_KEY_0') }}"
+          GIT_CONFIG_VALUE_0: "{{ lookup('env', 'GIT_CONFIG_VALUE_0') }}"
+          GIT_ASKPASS: "{{ lookup('env', 'GIT_ASKPASS') }}"
