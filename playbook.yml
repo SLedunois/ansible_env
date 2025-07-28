@@ -1,0 +1,14 @@
+---
+- name: Print environment variables
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Print all environment variables
+      shell: env
+      delegate_to: localhost
+      register: env_output
+
+    - name: Show environment variables
+      debug:
+        var: env_output.stdout
